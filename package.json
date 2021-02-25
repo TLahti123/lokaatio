@@ -4,7 +4,8 @@
   "description": "lokaatio api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/TLahti123/lokaatio/issues"
   },
-  "homepage": "https://github.com/TLahti123/lokaatio#readme"
+  "homepage": "https://github.com/TLahti123/lokaatio#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
