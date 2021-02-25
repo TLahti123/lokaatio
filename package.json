@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/TLahti123/lokaatio#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "prettier": "^2.2.1"
   }

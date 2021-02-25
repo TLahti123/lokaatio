@@ -8,12 +8,36 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    
 
 </head>
 
 <body>
-    <script src="js/scripts.js"></script>
+    
     <h2>Heippa</h2>
+    <div id="pretty" style="display: none"><%= database %></div>
+    <div id="ugly" style="display: inline"><%= database2 %></div>
+    <br />
+    <center><button id="nappi" onclick="naytos()">Prettify</button></center>
 </body>
+<script>
+
+    function naytos() {
+        if (document.getElementById("pretty").style.display == "none") {
+            document.getElementById("pretty").style.display = "inline"
+            document.getElementById("nappi").innerHTML = "Uglify"
+        }
+        else {
+            document.getElementById("pretty").style.display = "none"
+        }
+        if (document.getElementById("ugly").style.display == "none") {
+            document.getElementById("ugly").style.display = "inline"
+            document.getElementById("nappi").innerHTML = "Prettify"
+    }
+        else {
+            document.getElementById("ugly").style.display = "none"
+    }
+    }
+
+</script>
 </html>
