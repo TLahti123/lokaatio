@@ -1,43 +1,28 @@
 <!doctype html>
-
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-
-    <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
-
-    
-
+    <title>HTML5 Page</title>
 </head>
 
 <body>
-    
-    <h2>Heippa</h2>
-    <div id="pretty" style="display: none"><%= database %></div>
-    <div id="ugly" style="display: inline"><%= database2 %></div>
-    <br />
-    <center><button id="nappi" onclick="naytos()">Prettify</button></center>
+    <h1>Locations API</h1>
+    <ul>
+
+    </ul>
+    <script>
+        const main = async () => {
+            let hr = await fetch("http://localhost:8080/api/locations")
+            let data = await hr.json()
+            modifiUI(data)
+        }
+        const modifiUI = (data) => {
+            let ul = document.querySelector("ul")
+            ul.innerHTML = data.map((item) => `<li>${item.latitude} - ${item.longitude}</li>`).join("")
+        }
+        main()
+    </script>
 </body>
-<script>
 
-    function naytos() {
-        if (document.getElementById("pretty").style.display == "none") {
-            document.getElementById("pretty").style.display = "inline"
-            document.getElementById("nappi").innerHTML = "Uglify"
-        }
-        else {
-            document.getElementById("pretty").style.display = "none"
-        }
-        if (document.getElementById("ugly").style.display == "none") {
-            document.getElementById("ugly").style.display = "inline"
-            document.getElementById("nappi").innerHTML = "Prettify"
-    }
-        else {
-            document.getElementById("ugly").style.display = "none"
-    }
-    }
-
-</script>
 </html>

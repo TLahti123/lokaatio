@@ -1,7 +1,7 @@
 {
-  "name": "lokaatio",
+  "name": "mun-lokaatio-api",
   "version": "1.0.0",
-  "description": "lokaatio api",
+  "description": "tässä mun lokaatio api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TLahti123/lokaatio.git"
+    "url": "git+https://github.com/pohjus/mun-lokaatio-api.git"
   },
-  "author": "toni lahti",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TLahti123/lokaatio/issues"
+    "url": "https://github.com/pohjus/mun-lokaatio-api/issues"
   },
-  "homepage": "https://github.com/TLahti123/lokaatio#readme",
+  "homepage": "https://github.com/pohjus/mun-lokaatio-api#readme",
   "dependencies": {
-    "ejs": "^3.1.6",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "prettier": "^2.2.1"
+    "express-validator": "^6.10.0",
+    "mysql": "^2.18.1"
   }
 }

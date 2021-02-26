@@ -1,31 +1,57 @@
 const express = require("express");
+var bodyParser = require("body-parser");
+let locationsrouter = require("./routes/locationrouter.js");
+const { body, validationResult } = require("express-validator");
+
 const app = express();
-const path = require("path");
-const router = express.Router();
 const port = process.env.PORT || 8080;
-// test
+// create application/json parser
+var jsonParser = bodyParser.json();
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+// lukee http request bodyn ja muuttaa sen javascript olioksi
+// ja laittaa sen req.body muuttujaan
+app.use(express.json());
+
 app.use(express.static("public"));
-app.engine("html", require("ejs").renderFile);
+app.use(urlencodedParser);
 
-app.get("/hei", (req, res) => {
-  res.send("heipparallaa");
+const validate = loc => {
+  // console.log(JSON.stringify(loc, null, 4));
+  //console.log(loc.longitude); // -180 to 80
+  //console.log(loc.latitude); // -90 to 90
+  let virheita = 0;
+  if (loc.longitude > 80 || loc.longitude < -180) {
+    virheita++;
+    console.log("longitude vaarin");
+  }
+  if (loc.latitude > 90 || loc.latitude < -90) {
+    virheita++;
+    console.log("latitude vaarin");
+  }
+  if (virheita) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+app.use((req, res, next) => {
+  if (req.method == "POST") {
+    if (validate(req.body)) {
+      next();
+    } else {
+      res.sendStatus = 400;
+      res.end();
+    }
+  } else {
+    console.log(req.method);
+  }
+  next();
 });
 
-app.get("/api/locations", (req, res) => {
-  let database = [
-    { id: 1, latitude: 60, longitude: 70 },
-    { id: 2, latitude: 40, longitude: 80 },
-  ];
-  app.set("json spaces", "\t"); // number of spaces for indentation
-
-  database2 = JSON.stringify(database);
-  database = JSON.stringify(database, null, "\t");
-
-  res.render(path.join(__dirname + "/public/index.html"), {
-    database,
-    database2,
-  });
-});
+app.use("/api/locations", locationsrouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

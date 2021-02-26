@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\database",
+    "\\public"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\database\\cruderepo.js",
   "PreviewInSolutionExplorer": false
 }
